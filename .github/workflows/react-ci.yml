@@ -1,4 +1,4 @@
-name: React CI/CD Pipeline
+name: React CI
 
 on:
   push:
@@ -10,8 +10,8 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
-    runs-on: self-hosted
+  build:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -28,17 +28,3 @@ jobs:
 
       - name: Build React application
         run: npm run build
-
-      - name: Deploy to IIS
-        shell: powershell
-        run: |
-          $source = "${{ github.workspace }}\dist\*"
-          $destination = "C:\inetpub\wwwroot\DPMpipeline"
-
-          Write-Host "Deploying React application..."
-
-          Remove-Item "$destination\*" -Recurse -Force -ErrorAction SilentlyContinue
-
-          Copy-Item $source $destination -Recurse -Force
-
-          Write-Host "Deployment completed successfully."

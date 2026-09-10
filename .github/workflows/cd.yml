@@ -1,0 +1,38 @@
+name: React CD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build React application
+        run: npm run build
+
+      - name: Deploy to IIS
+        shell: powershell
+        run: |
+          $source = "${{ github.workspace }}\dist\*"
+          $destination = "C:\inetpub\wwwroot\DPMpipeline"
+
+          Write-Host "Deploying React application..."
+
+          Remove-Item "$destination\*" -Recurse -Force -ErrorAction SilentlyContinue
+
+          Copy-Item $source $destination -Recurse -Force
+
+          Write-Host "Deployment completed successfully."
