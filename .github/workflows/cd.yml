@@ -15,7 +15,6 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 20
-          cache: npm
 
       - name: Install dependencies
         run: npm ci
@@ -30,6 +29,10 @@ jobs:
           $destination = "C:\inetpub\wwwroot\DPMpipeline"
 
           Write-Host "Deploying React application..."
+
+          if (!(Test-Path $destination)) {
+              New-Item -ItemType Directory -Path $destination -Force
+          }
 
           Remove-Item "$destination\*" -Recurse -Force -ErrorAction SilentlyContinue
 
