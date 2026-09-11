@@ -1,0 +1,458 @@
+.fitting-dispensing-prototype {
+    --fitting-dispensing-muted: #8e8e8e;
+}
+
+.fitting-dispensing-modal {
+    position: fixed;
+    top: 50%;
+    right: clamp(18px, 3.6vw, 70px);
+    left: clamp(18px, 5vw, 92px);
+    z-index: 10;
+    display: grid;
+    height: min(846px, calc(100svh - 36px));
+    max-width: 1489px;
+    grid-template-rows: auto auto minmax(0, 1fr);
+    margin: 0 auto;
+    padding: 26px 29px 0;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow:
+        0 12px 22px rgba(0, 0, 0, 0.24),
+        0 4px 2px rgba(0, 0, 0, 0.25);
+    color: var(--qms-navy);
+    font-family: var(--font-family);
+    overflow: hidden;
+    transform: translateY(-50%);
+}
+
+.fitting-dispensing-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 4;
+    display: grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--fitting-dispensing-muted);
+    cursor: pointer;
+}
+
+.fitting-dispensing-close:hover,
+.fitting-dispensing-close:focus-visible {
+    background: #f5f9fb;
+    color: var(--qms-navy);
+}
+
+.fitting-dispensing-close:focus-visible,
+.fitting-dispensing-tabs button:focus-visible,
+.fitting-dispensing-actions-button:focus-visible,
+.fitting-dispensing-actions-menu button:focus-visible,
+.fitting-dispensing-confirmation button:focus-visible {
+    outline: 2px solid var(--qms-blue);
+    outline-offset: 2px;
+}
+
+.fitting-dispensing-actions {
+    position: absolute;
+    top: 18px;
+    right: 60px;
+    z-index: 8;
+}
+
+.fitting-dispensing-actions-button {
+    display: inline-flex;
+    width: 131px;
+    height: 32px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 0 13px;
+    border: 1px solid #bababa;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--qms-navy);
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.fitting-dispensing-actions-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    display: grid;
+    width: 246px;
+    padding: 6px;
+    border: 1px solid var(--qms-line);
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 12px 24px rgba(16, 62, 82, 0.16);
+}
+
+.fitting-dispensing-actions-menu button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--qms-navy);
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    text-align: left;
+}
+
+.fitting-dispensing-actions-menu button:hover,
+.fitting-dispensing-actions-menu button:focus-visible {
+    background: #f1f8fb;
+    color: var(--qms-blue);
+}
+
+.fitting-dispensing-actions-menu button.danger {
+    color: #b42318;
+}
+
+.fitting-dispensing-actions-menu button:disabled {
+    color: #82919a;
+    cursor: default;
+}
+
+.fitting-dispensing-header {
+    display: flex;
+    min-height: 64px;
+    align-items: start;
+    justify-content: space-between;
+    gap: 32px;
+    padding-right: 46px;
+}
+
+.fitting-dispensing-header .modal-task-heading {
+    flex: none;
+    width: min(100%, 360px);
+}
+
+.fitting-dispensing-header h2 {
+    margin: 0;
+    color: var(--qms-blue);
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.fitting-dispensing-header-copy {
+    width: min(100%, 620px);
+    margin: 2px 160px 0 0;
+}
+
+.fitting-dispensing-header-copy p {
+    margin: 0;
+    color: var(--qms-navy);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.35;
+}
+
+.fitting-dispensing-header-copy span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    color: #b42318;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.fitting-dispensing-tabs {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: 68px;
+    align-items: end;
+    gap: 8px;
+    margin: 6px -29px 0;
+    padding: 0 29px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.fitting-dispensing-tabs button {
+    position: relative;
+    display: flex;
+    min-width: 180px;
+    height: 52px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 8px 8px 0 0;
+    background: transparent;
+    color: var(--qms-navy);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.fitting-dispensing-tabs button:not(.active):hover {
+    background: #f5f9fb;
+    color: var(--qms-blue);
+}
+
+.fitting-dispensing-tabs button.active::after {
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 3px;
+    background: var(--qms-blue);
+    content: '';
+}
+
+.fitting-dispensing-content,
+.fitting-dispensing-tab-panel,
+.fitting-prototype--embedded,
+.dispensing-prototype--embedded {
+    min-height: 0;
+    height: 100%;
+}
+
+.fitting-dispensing-tab-panel[hidden] {
+    display: none;
+}
+
+.fitting-dispensing-modal .fitting-modal--embedded,
+.fitting-dispensing-modal .dispensing-modal--embedded {
+    position: static;
+    inset: auto;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+    transform: none;
+}
+
+.fitting-dispensing-modal .fitting-modal--embedded {
+    grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.fitting-dispensing-modal .fitting-modal--embedded.submitted {
+    grid-template-rows: minmax(0, 1fr);
+}
+
+.fitting-dispensing-modal .fitting-modal--embedded .fitting-content-grid {
+    margin-top: 20px;
+}
+
+.fitting-dispensing-modal .dispensing-modal--embedded {
+    grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.fitting-dispensing-modal .dispensing-modal--embedded .dispensing-panel-grid {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: hidden auto;
+}
+
+.fitting-dispensing-modal .fitting-footer,
+.fitting-dispensing-modal .dispensing-certification {
+    margin-right: -29px;
+    margin-left: -29px;
+    background: #ffffff;
+}
+
+.fitting-dispensing-confirmation-backdrop {
+    position: absolute;
+    z-index: 30;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgba(8, 38, 52, 0.4);
+}
+
+.fitting-dispensing-confirmation {
+    display: grid;
+    width: min(100%, 440px);
+    justify-items: center;
+    padding: 28px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 18px 50px rgba(8, 38, 52, 0.25);
+    color: var(--qms-navy);
+    text-align: center;
+}
+
+.fitting-dispensing-confirmation-icon {
+    display: grid;
+    width: 52px;
+    height: 52px;
+    place-items: center;
+    border-radius: 999px;
+    background: #fef3f2;
+    color: #b42318;
+}
+
+.fitting-dispensing-confirmation h3 {
+    margin: 16px 0 8px;
+    font-size: 20px;
+}
+
+.fitting-dispensing-confirmation p {
+    margin: 0;
+    color: #496b7a;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.fitting-dispensing-confirmation > div:last-child {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.fitting-dispensing-confirmation button {
+    min-height: 38px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.fitting-dispensing-confirmation button.secondary {
+    border: 1px solid #bababa;
+    background: #ffffff;
+    color: var(--qms-navy);
+}
+
+.fitting-dispensing-confirmation button.danger {
+    background: #b42318;
+    color: #ffffff;
+}
+
+@media (max-width: 760px) {
+    .fitting-dispensing-modal {
+        inset: 10px;
+        height: auto;
+        min-height: calc(100dvh - 20px);
+        padding: 18px 14px 0;
+        border-radius: 14px;
+        transform: none;
+    }
+
+    .fitting-dispensing-header {
+        display: block;
+        padding-right: 38px;
+    }
+
+    .fitting-dispensing-header-copy {
+        margin-right: 0;
+        margin-top: 10px;
+    }
+
+    .fitting-dispensing-header-copy p {
+        font-size: 14px;
+    }
+
+    .fitting-dispensing-tabs {
+        min-height: 62px;
+        margin-right: -14px;
+        margin-left: -14px;
+        padding: 0 14px;
+    }
+
+    .fitting-dispensing-tabs button {
+        min-width: 0;
+        flex: 1;
+        font-size: 13px;
+    }
+
+    .fitting-dispensing-modal .fitting-footer,
+    .fitting-dispensing-modal .dispensing-certification {
+        margin-right: -14px;
+        margin-left: -14px;
+    }
+}
+
+@media (max-width: 520px) {
+    .fitting-dispensing-actions-button {
+        width: 110px;
+        gap: 8px;
+        padding: 0 10px;
+        font-size: 11px;
+    }
+
+    .fitting-dispensing-actions-menu {
+        right: 0;
+    }
+
+    .fitting-dispensing-confirmation > div:last-child {
+        flex-direction: column-reverse;
+    }
+
+    .fitting-dispensing-confirmation button {
+        width: 100%;
+    }
+}
+
+@media print {
+    .fitting-dispensing-close,
+    .fitting-dispensing-header,
+    .fitting-dispensing-tabs {
+        display: none;
+    }
+
+    .fitting-dispensing-actions,
+    .fitting-dispensing-confirmation-backdrop {
+        display: none;
+    }
+
+    .fitting-dispensing-modal {
+        position: static;
+        display: block;
+        height: auto;
+        max-width: none;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: visible;
+        transform: none;
+    }
+
+    .fitting-dispensing-content,
+    .fitting-dispensing-tab-panel,
+    .fitting-prototype--embedded,
+    .dispensing-prototype--embedded,
+    .fitting-dispensing-modal .fitting-modal--embedded,
+    .fitting-dispensing-modal .dispensing-modal--embedded {
+        display: block;
+        height: auto;
+        overflow: visible;
+    }
+
+    .fitting-dispensing-tab-panel[hidden] {
+        display: block;
+    }
+
+    .fitting-content-grid,
+    .dispensing-panel-grid {
+        overflow: visible;
+    }
+
+    .fitting-dispensing-tab-panel + .fitting-dispensing-tab-panel {
+        break-before: page;
+    }
+}

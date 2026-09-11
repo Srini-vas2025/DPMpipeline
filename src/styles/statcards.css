@@ -1,0 +1,129 @@
+/* font awesome icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+/* stat cards container */
+.stat-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+/* stat card */
+.stat-card {
+    background: #ffffff;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    padding: 18px 16px;
+    text-align: center;
+    font-family: inherit;
+    cursor: pointer;
+    transition:
+        transform 160ms ease,
+        box-shadow 160ms ease,
+        border-color 160ms ease,
+        background-color 160ms ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(3, 131, 189, 0.35);
+    box-shadow: 0 9px 24px rgba(11, 75, 82, 0.16);
+}
+
+.stat-card:focus-visible {
+    outline: 3px solid rgba(39, 170, 225, 0.4);
+    outline-offset: 3px;
+}
+
+.stat-card.selected {
+    border-color: #0383bd;
+    background: #f2fbff;
+    box-shadow: 0 8px 22px rgba(3, 131, 189, 0.2);
+}
+
+.stat-card.selected .stat-card-icon {
+    background: #0383bd;
+}
+
+/* icon */
+.stat-card-icon {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    background: #0b4b52;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+}
+
+/* text */
+.stat-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0b4b52;
+    margin-bottom: 4px;
+}
+
+.stat-card-count {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0383bd;
+    margin-bottom: 6px;
+}
+
+.stat-card-description {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0b4b52;
+    line-height: 1.35;
+}
+
+/* responsive */
+@media (max-width: 1200px) {
+    .stat-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .stat-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 16px 14px;
+    }
+
+    .stat-card-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+
+    .stat-card-title {
+        font-size: 14px;
+    }
+
+    .stat-card-count {
+        font-size: 16px;
+    }
+
+    .stat-card-description {
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .stat-card {
+        transition: none;
+    }
+
+    .stat-card:hover {
+        transform: none;
+    }
+}

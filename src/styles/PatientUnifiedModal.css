@@ -1,0 +1,242 @@
+.modal-card.large-modal.patient-unified-modal {
+    --patient-accent: #24aae1;
+    --patient-navy: #103e52;
+    position: relative;
+    width: min(1240px, calc(100vw - 56px));
+    height: min(700px, calc(100svh - 40px));
+    max-height: calc(100svh - 40px);
+    padding: 24px 22px 20px;
+    border: 0;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow:
+        0 12px 22px rgba(0, 0, 0, 0.24),
+        0 4px 2px rgba(0, 0, 0, 0.25);
+    color: var(--patient-navy);
+    overflow: hidden;
+}
+
+.patient-unified-modal > .modal-header {
+    min-height: 58px;
+    margin: 0;
+}
+
+.patient-unified-modal .modal-title {
+    margin: 0;
+    color: var(--patient-accent) !important;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.patient-unified-modal .modal-patient-row {
+    display: none;
+}
+
+.patient-unified-modal .patient-modal-controls {
+    position: absolute;
+    top: 16px;
+    right: 22px;
+    z-index: 8;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.patient-unified-modal .modal-close-btn {
+    position: static;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 22px;
+}
+
+.patient-unified-modal .modal-actions-wrapper {
+    position: relative;
+    flex: 0 0 auto;
+    margin-top: 49px;
+    z-index: 8;
+}
+
+.patient-unified-modal .modal-actions-btn {
+    display: flex;
+    width: 131px;
+    height: 32px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 0 14px;
+    border: 1px solid #bdbdbd;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--patient-navy);
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.patient-unified-modal .modal-actions-btn svg {
+    flex: 0 0 auto;
+    color: var(--patient-navy);
+}
+
+.patient-unified-modal .modal-actions-btn:hover,
+.patient-unified-modal .modal-actions-btn:focus-visible {
+    border-color: #9f9f9f;
+    background: #fff;
+    color: var(--patient-navy);
+}
+
+.patient-unified-modal > .modal-tabs {
+    position: relative;
+    display: flex;
+    min-height: 74px;
+    flex: 0 0 74px;
+    align-items: end;
+    gap: 8px;
+    margin: 6px -22px 14px;
+    padding: 6px 175px 0 22px;
+    border-bottom: 1px solid #eee;
+    overflow-x: auto;
+}
+
+.patient-unified-modal > .modal-tabs button {
+    position: relative;
+    min-width: 150px;
+    height: 52px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 8px 8px 0 0;
+    background: transparent;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    color: var(--patient-navy);
+    font-size: 15px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.patient-unified-modal > .modal-tabs button.active {
+    color: var(--patient-navy);
+    background: transparent;
+}
+
+.patient-unified-modal > .modal-tabs button.active::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--patient-accent) !important;
+    content: '';
+}
+
+.patient-unified-modal > .modal-tabs button:not(.active):hover {
+    background: #f5f9fb;
+    color: var(--patient-accent);
+}
+
+.patient-tab-status {
+    display: flex;
+    height: 14px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.patient-tab-status.hidden {
+    visibility: hidden;
+}
+
+.patient-tab-status i {
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #d7d7d7;
+}
+
+.patient-tab-status i.complete {
+    background: #43a92c;
+}
+
+.patient-tab-status i.warning {
+    background: #dbcd07;
+}
+
+.patient-unified-modal .modal-actions-menu {
+    top: calc(100% + 5px);
+    right: 0;
+    left: auto;
+}
+
+.patient-unified-modal > .modal-content-grid,
+.patient-unified-modal > .modal-tab-content,
+.patient-unified-modal > .patient-unified-notes {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+}
+
+.patient-unified-modal > .modal-content-grid {
+    gap: clamp(16px, 1.7vw, 24px);
+}
+
+.patient-unified-modal .modal-info-card {
+    border: 2px solid #ededed;
+    border-radius: 8px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.patient-unified-modal .modal-info-card > h3 {
+    min-height: 45px;
+    margin: 0;
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--qms-line);
+    color: var(--patient-navy);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.patient-unified-modal .modal-info-row {
+    padding: 10px 16px;
+    background: #fff;
+}
+
+.patient-unified-modal .modal-info-row.light,
+.patient-unified-modal .modal-info-row:nth-of-type(even) {
+    background: #fafafa;
+}
+
+.patient-unified-modal .modal-info-row label {
+    color: #8e8e8e;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.patient-unified-modal .modal-info-row p {
+    margin: 2px 0 0;
+    color: var(--patient-navy);
+    font-size: 14px;
+}
+
+.patient-unified-notes .notes-body {
+    padding-top: 0;
+}
+
+@media (max-width: 900px) {
+    .modal-card.large-modal.patient-unified-modal {
+        width: calc(100vw - 28px);
+        height: calc(100svh - 28px);
+        max-height: calc(100svh - 28px);
+    }
+
+    .patient-unified-modal > .modal-content-grid {
+        grid-template-columns: 1fr;
+    }
+}

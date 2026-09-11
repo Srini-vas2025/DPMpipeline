@@ -1,0 +1,69 @@
+/* ---------- MASTER PAGE ---------- */
+
+/* Main layout */
+.master-page {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background: #f5f6f8;
+    overflow-x: hidden;
+}
+
+/* Content area */
+.master-page-content {
+    flex: 1;
+    min-width: 0;
+    background: #f5f6f8;
+    overflow-x: hidden;
+}
+
+/* Mobile menu */
+.mobile-menu-toggle {
+    display: none;
+}
+
+/* Page spacing */
+.page-content {
+    padding: 20px 24px;
+}
+
+/* ---------- SMALL SCREENS ---------- */
+
+@media (max-width: 1024px) {
+
+    /* Main layout */
+    .master-page {
+        display: block;
+    }
+
+    /* Content area */
+    .master-page-content {
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    /* Mobile menu */
+    .mobile-menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 14px;
+        left: 14px;
+        z-index: 1101;
+        width: 46px;
+        height: 46px;
+        border: none;
+        border-radius: 10px;
+        background: #20aae2;
+        color: #ffffff;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.master-page-content {
+    overflow-y: auto; /* ← this is required for scrollBy to work on the element */
+    height: 100vh; /* or whatever height constrains it */
+}
